@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/header.ejs') %>
+            <section class="blog mt-5">
+                <h1 class="my-4 text-center text-primary">Manage Blog</h1>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col col-sm-9 text-dark">
+                                <h4><strong>Blog</strong></h4>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="sample_data">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Created At</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <script src="/js/alerts.js"></script>
+            <script src="/js/home.js"></script>
+            <script src="/js/blog.js"></script>
+    </body>
+
+</html>

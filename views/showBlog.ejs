@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/header.ejs') %>
+            <section class="blog mt-5">
+                <div class="d-flex">
+                    <div class="col">
+                        <div class="blog-info" style="margin-right: 12px;">
+                            <div class="bg-light px-2 pb-5">
+                                <div class="date-created d-flex py-3">
+                                    <div class="col-7" style="color: #666; font-size: 12px; margin-top: 10px">
+                                        <i class="fa fa-calendar" aria-hidden="true">&nbsp</i>
+                                        <span style="line-height: 15px;">
+                                            <%= blog[0].timeCreated.getHours()>
+                                                9?blog[0].timeCreated.getHours():"0"+blog[0].timeCreated.getHours() %>:<%=
+                                                    blog[0].timeCreated.getMinutes()>
+                                                    9?blog[0].timeCreated.getMinutes():"0"+blog[0].timeCreated.getMinutes()
+                                                    %>&nbsp
+                                                    <%= blog[0].timeCreated.getDate()>
+                                                        9?blog[0].timeCreated.getDate():"0"+blog[0].timeCreated.getDate() %>/
+                                                        <%= blog[0].timeCreated.getMonth()>
+                                                            8?blog[0].timeCreated.getMonth()+1:"0"+(blog[0].timeCreated.getMonth()+1)
+                                                            %>/<%= blog[0].timeCreated.getFullYear() %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="tt-blog mt-3 mb-5">
+                                    <p class="mb-2 text-dark" style="font-size: 28px;">
+                                        <%= blog[0].title %>
+                                    </p>
+                                </div>
+                                <div class="descrip-blog">
+                                    <span class="text-dark">
+                                        <%- blog[0].description %>
+
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <script src="/js/alerts.js"></script>
+            <script src="/js/home.js"></script>
+    </body>
+
+</html>

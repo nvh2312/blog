@@ -1,0 +1,70 @@
+<header class="header">
+
+    <a href="/" class="logo"> <i class="fas fa-paw"></i> Blog</a>
+
+    <nav class="navbar">
+        <div class="input-group input-group-lg rounded">
+            <input type="text" id="searchStr" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+            </span>
+        </div>
+    </nav>
+
+    <div class="icons">
+        <%if(typeof user=="undefined" ){ %>
+            <div id="login-btn" class="fas fa-user"></div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <% } else if(user.role=="admin" ){ %>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <%= user.name %>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" style="font-size:16px" href="/user">Quản lý user</a>
+                        <a class="dropdown-item" style="font-size:16px" href="/blog">Quản lý blog</a>
+                        <a class="dropdown-item" style="font-size:16px" href="/add">Thêm bài viết</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="logout" style="font-size:16px">Đăng xuất</a>
+                    </div>
+                </div>
+                <% } else{ %>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <%= user.name %>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" style="font-size:16px" href="/add">Thêm bài viết</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" id="logout" style="font-size:16px">Đăng xuất</a>
+                        </div>
+                    </div>
+                    <% } %>
+    </div>
+
+    <!-- login form -->
+
+    <form action="" class="login-form">
+
+        <h3 id="titleForm">login form</h3>
+
+        <input type="email" placeholder="Enter your email" id="username" class="box">
+        <input type="password" placeholder="Enter your password" id="password" class="box">
+        <div class="remember d-flex">
+            <div class="col-md-6">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">remember me</label>
+            </div>
+            <div class="col-md-6 justify-content-end d-flex justify-content-end">
+                <button id="toSignUp" style="padding: 1px 2px; border: 0;">signup here</button>
+            </div>
+        </div>
+        <input type="hidden" id="action" value="login">
+        <a id="btn-action" class="btn">login</a>
+
+    </form>
+
+</header>

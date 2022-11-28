@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/header.ejs') %>
+            <section class="blog mt-5">
+                <h1 class="heading mt-5">our blog</h1>
+
+                <div class="box-container">
+                    <% if(blog.length==0 ){%>
+                        <h1 class="text-center text-danger">Không có bài viết nào</h1>
+                        <%}else{ for(let i=0; i<blog.length; i++) {%>
+                            <div class="box shadow">
+                                <div class="image">
+                                    <img src="/uploads/images/<%= blog[i].image %>" alt="">
+                                </div>
+                                <div class="content">
+                                    <h3>
+                                        <%= blog[i].title %>
+                                            </p>
+                                            <a href="/<%= blog[i].slug %>" class="btn">read more</a>
+                                </div>
+
+                            </div>
+
+                            <% }} %>
+
+                </div>
+
+                <!-- pagination -->
+                <div class="row">
+                    <!-- hiển thị phân trang nếu có trang -->
+                    <% if(pages> 0) { %>
+                        <nav class="mx-auto d-flex justify-content-center" style="font-size:16px;">
+                            <ul class="pagination" style="margin-top: 2rem;">
+
+                                <!-- FIRST ITEM -->
+                                <% if(current==1) { %>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="/">First</a>
+                                    </li>
+                                    <% } else { %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="/">First</a>
+                                        </li>
+                                        <% } %>
+
+                                            <!-- ITEMS  -->
+                                            <% var i=(Number(current)> 3 ? Number(current) - 2 : 1) %>
+
+                                                <% if(i !==1) { %>
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#">...</a>
+                                                    </li>
+                                                    <% } %>
+                                                        <% for(; i <=(Number(current) + 2) && i <=pages; i++) { %>
+
+                                                            <% if(i==current) { %>
+                                                                <li class="page-item active">
+                                                                    <a class="page-link" href="?page=<%= i %>">
+                                                                        <%= i %>
+                                                                    </a>
+                                                                </li>
+                                                                <% } else { %>
+                                                                    <li class="page-item">
+                                                                        <a class="page-link" href="?page=<%= i %>">
+                                                                            <%= i %>
+                                                                        </a>
+                                                                    </li>
+                                                                    <% } %>
+                                                                        <% if (i==Number(current) + 2 && i < pages) { %>
+                                                                            <li class="page-item disabled">
+                                                                                <a class="page-link" href="#">...</a>
+                                                                            </li>
+                                                                            <% } %>
+                                                                                <% } %>
+
+                                                                                    <!-- LAST ITEM -->
+                                                                                    <% if(current==pages) { %>
+
+                                                                                        <li class="page-item disabled">
+                                                                                            <a class="page-link"
+                                                                                                href="#">
+                                                                                                Last
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <% } else { %>
+
+                                                                                            <li class="page-item">
+                                                                                                <a class="page-link"
+                                                                                                    href="/?page=<%= pages %>">
+                                                                                                    Last
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <% } %>
+                            </ul>
+                        </nav>
+                        <% } %>
+                </div>
+                </div>
+            </section>
+
+
+
+
+            <script src="/js/alerts.js"></script>
+            <script src="/js/home.js"></script>
+    </body>
+
+</html>

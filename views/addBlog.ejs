@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/header.ejs') %>
+            <section class="blog mt-5">
+                <h1 class="heading mt-5">Add blog</h1>
+                <form id="add" enctype="multipart/form-data">
+                    <div class="form-group my-3">
+
+                        <label for="title" class="px-2 text-dark">Title</label>
+                        <input type="text" id="title" class="form-control" placeholder="Title" name="title" required>
+                    </div>
+
+                    <div class="form-group my-3">
+
+                        <label for="description" class="px-2 text-dark">Description</label>
+                        <textarea name="description" id="description" placeholder="Description" class="form-control"
+                            rows="30"></textarea>
+                    </div>
+                    <div class="my-2 form-group">
+                        <label for="image" class="px-2 text-dark">Upload image</label>
+                        <input type="file" name="image" id="image" class="form-control-file text-dark">
+                    </div>
+
+                    <div class="form-group my-3">
+                        <a href="/" class="btn btn-warning">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+
+            </section>
+            <!-- pagination -->
+
+            <script src="/js/alerts.js"></script>
+            <script src="/js/add.js"></script>
+            <script src="/js/home.js"></script>
+    </body>
+
+</html>
