@@ -20,6 +20,7 @@ $("#logout").on("click", async () => {
 });
 
 $("#login-btn").on("click", () => {
+  $("#name").css("display", "none");
   $("#toSignUp").html("Signup here");
   $("#btn-action").html("Login");
   $("#action").val("login");
@@ -28,24 +29,29 @@ $("#login-btn").on("click", () => {
   navbar.removeClass("active");
 });
 
-
 $("#btn-action").on("click", async () => {
   try {
     const username = $("#username").val();
     const password = $("#password").val();
-    // const action = $("#action").val();
-    // const url = action =="login" ? "/api/v1/users/login":"/api/v1/users/signup"
+    const name = $("#name").val();
+    const data = {
+      username,
+      password,
+    };
+    const action = $("#action").val();
+    if (action == "signup") data.name = name;
+    const url =
+      action == "login" ? "/api/v1/users/login" : "/api/v1/users/signup";
     const res = await axios({
       method: "POST",
-      url: "/api/v1/users/login",
-      data: {
-        username,
-        password,
-      },
+      url,
+      data,
     });
 
     if (res.data.status === "success") {
-      showAlert("success", "Logged in successfully!");
+      if (action == "login") {
+        showAlert("success", "Logged in successfully!");
+      } else showAlert("success", "Sign up successfully!");
       window.setTimeout(() => {
         location.assign("/");
       }, 1500);
@@ -65,11 +71,13 @@ $("#search-addon").on("click", async () => {
 $("#toSignUp").on("click", (e) => {
   e.preventDefault();
   if ($("#action").val() == "login") {
+    $("#name").css("display", "block");
     $("#toSignUp").html("login here");
     $("#btn-action").html("Sign Up");
     $("#action").val("signup");
     $("#titleForm").html("Signup Form");
   } else {
+    $("#name").css("display", "none");
     $("#toSignUp").html("Signup here");
     $("#btn-action").html("Login");
     $("#action").val("login");
