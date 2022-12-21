@@ -22,10 +22,16 @@ app.use(methodOverride("_method"));
 
 // 1) GLOBAL MIDDLEWARES
 // Implement CORS
-app.use(cors());
+// app.use(cors());
 
-app.options("*", cors());
+// app.options("*", cors());
 
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
+  })
+);
 // Serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
