@@ -25,14 +25,16 @@ app.use(methodOverride("_method"));
 // app.use(cors());
 
 // app.options("*", cors());
-
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
-    credentials: true,
-  })
-);
+app.use(cors({
+  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
+//     credentials: true,
+//   })
+// );
 // Serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
