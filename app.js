@@ -30,6 +30,7 @@ app.use(
   cors({
     origin: "http://localhost:3000",
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
+    credentials: true,
   })
 );
 // Serving static files
